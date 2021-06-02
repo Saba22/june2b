@@ -237,7 +237,7 @@
     "# -----------------------------------------------\n",
     "\n",
     "# Build App\n",
-    "app = JupyterDash(__name__, external_stylesheets=external_stylesheets)\n",
+    "app = dash.Dash(__name__, external_stylesheets=external_stylesheets)\n",
     "server = app.server\n",
     "app.title = \"sababa_portfolio_performance\"\n",
     "\n",
@@ -356,7 +356,6 @@
     "\n",
     "if __name__ == \"__main__\":\n",
     "    app.run_server(debug=True)\n",
-    "    app.run_server(mode='jupyterlab')"
    ]
   },
   {
