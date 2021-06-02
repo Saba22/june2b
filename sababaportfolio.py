@@ -239,7 +239,7 @@
     "# Build App\n",
     "app = dash.Dash(__name__, external_stylesheets=external_stylesheets)\n",
     "server = app.server\n",
-    "app.title = \"sababa_portfolio_performance\"\n",
+    "app.title = \"sababaportfolio\"\n",
     "\n",
     "# ----------------------------------------------\n",
     "\n",
