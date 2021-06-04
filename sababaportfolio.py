@@ -19,16 +19,16 @@ pio.renderers.default='iframe'
 # -----------------------------------------------
 # load and process data and create a master dataframe with all models performance
 
-nq_moderate = pd.read_excel('Models.xlsx', sheet_name = \"NQ Moderate\")
-nq_moderately_conservative = pd.read_excel('Models.xlsx', sheet_name = \"NQ Moderately Conservative\")
-nq_conservative = pd.read_excel('Models.xlsx', sheet_name = \"NQ Conservative\")
-nq_moderately_aggressive = pd.read_excel('Models.xlsx', sheet_name = \"NQ Moderately Aggressive\")
-nq_aggressive = pd.read_excel('Models.xlsx', sheet_name = \"NQ Aggressive\")
-q_conservative =pd.read_excel('Models.xlsx', sheet_name = \"Q Conservative\")
-q_moderately_conservative =pd.read_excel('Models.xlsx', sheet_name = \"Q Moderately Conservative\")
-q_moderate = pd.read_excel('Models.xlsx', sheet_name = \"Q Moderate\")
-q_moderately_aggressive =pd.read_excel('Models.xlsx', sheet_name = \"Q Moderately Aggressive\")
-q_aggressive =pd.read_excel('Models.xlsx', sheet_name = \"Q Aggressive\")
+nq_moderate = pd.read_excel('Models.xlsx', sheet_name = "NQ Moderate")
+nq_moderately_conservative = pd.read_excel('Models.xlsx', sheet_name = "NQ Moderately Conservative")
+nq_conservative = pd.read_excel('Models.xlsx', sheet_name = "NQ Conservative")
+nq_moderately_aggressive = pd.read_excel('Models.xlsx', sheet_name = "NQ Moderately Aggressive")
+nq_aggressive = pd.read_excel('Models.xlsx', sheet_name = "NQ Aggressive")
+q_conservative =pd.read_excel('Models.xlsx', sheet_name = "Q Conservative")
+q_moderately_conservative =pd.read_excel('Models.xlsx', sheet_name = "Q Moderately Conservative")
+q_moderate = pd.read_excel('Models.xlsx', sheet_name = "Q Moderate")
+q_moderately_aggressive =pd.read_excel('Models.xlsx', sheet_name = "Q Moderately Aggressive")
+q_aggressive =pd.read_excel('Models.xlsx', sheet_name = "Q Aggressive")
 
 models = [nq_conservative,
          nq_moderately_conservative,
@@ -201,9 +201,9 @@ dict = {
 
 external_stylesheets = [
     {
-        \"href\": \"https://fonts.googleapis.com/css2?\"
-                \"family=Lato:wght@400;700&display=swap\",
-        \"rel\": \"stylesheet\",
+        "href": "https://fonts.googleapis.com/css2?"
+                "family=Lato:wght@400;700&display=swap",
+        "rel": "stylesheet",
     },
 ]
 
@@ -212,7 +212,7 @@ external_stylesheets = [
 # Build App
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
-app.title = \"sababaportfolio\"
+app.title = "sababaportfolio"
 
 # ----------------------------------------------
 
@@ -224,18 +224,18 @@ app.layout = html.Div(
             children=[
 
         # header
-                html.P(children=\"📈\", className=\"header-emoji\"),
+                html.P(children="📈", className="header-emoji"),
                 html.H1(
-                    children=\"Portfolio Performance\", className=\"header-title\"
+                    children="Portfolio Performance", className="header-title"
                 ),
                 html.P(
-                    children=\"Analyze the performance of portfolio models\"
-                    \" and their individual components against a weighted\"
-                    \" benchmark and the S&P500 since implementation date\",
-                    className=\"header-description\",
+                    children="Analyze the performance of portfolio models"
+                    " and their individual components against a weighted"
+                    " benchmark and the S&P500 since implementation date",
+                    className="header-description",
                 ),
             ],
-            className=\"header\",
+            className="header",
         ),
 
         # dropdown menu
@@ -263,13 +263,13 @@ app.layout = html.Div(
         # graphs
         dcc.Graph(
             id = 'portfolio_graph',
-            config={\"displayModeBar\": False},
-            className=\"card\"
+            config={"displayModeBar": False},
+            className="card"
         ),
         dcc.Graph(
             id = 'individual_graph',
-            config={\"displayModeBar\": False},
-            className=\"card\"
+            config={"displayModeBar": False},
+            className="card"
         ),
     ]
 )
@@ -291,12 +291,12 @@ def update_portfolio_graph(column_chosen):
 
     # create a graph of portfolio performance
     fig=px.line()
-    fig.add_scatter(x = dff.index, y = dff[column_chosen], mode = 'lines', name = \"Portfolio\",)
-    fig.add_scatter(x = dff.index, y = dfg[column_chosen], mode = 'lines', name = \"Benchmark\")
-    fig.add_scatter(x = dff.index, y = dfh['S&P 500'], mode = 'lines', name = \"S&P 500\")
+    fig.add_scatter(x = dff.index, y = dff[column_chosen], mode = 'lines', name = "Portfolio",)
+    fig.add_scatter(x = dff.index, y = dfg[column_chosen], mode = 'lines', name = "Benchmark")
+    fig.add_scatter(x = dff.index, y = dfh['S&P 500'], mode = 'lines', name = "S&P 500")
     fig.update_layout(
         title={
-            'text': \"Portfolio Performance vs. Benchmark and S&P500, Cumulative Return on $1\",
+            'text': "Portfolio Performance vs. Benchmark and S&P500, Cumulative Return on $1",
             'y' : 0.95,
             'x' : 0.5,
             'xanchor': 'center',
@@ -314,11 +314,11 @@ def update_portfolio_graph(column_chosen):
 
 def update_individual_graph(column_chosen):
     fig2 = px.line(dict[column_chosen], labels={
-                 \"value\" : \"Cumulative Return on $1\",
-                 \"variable\" : \"Security\"})
+                 "value" : "Cumulative Return on $1",
+                 "variable" : "Security"})
     fig2.update_layout(
         title={
-            'text': \"Individual Security Performance\",
+            'text': "Individual Security Performance",
             'y' : 0.95,
             'x' : 0.5,
             'xanchor': 'center',
@@ -327,6 +327,5 @@ def update_individual_graph(column_chosen):
 
 # ------------------------------------------------------
 
-if __name__ == \"__main__\":
-    app.run_server(debug=True)\n",
-]
+if __name__ == "__main__":
+    app.run_server(debug=True)
